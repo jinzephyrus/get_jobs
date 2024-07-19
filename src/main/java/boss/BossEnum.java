@@ -44,13 +44,19 @@ public class BossEnum {
 
     @Getter
     public enum CityCode {
+        // todo get cities through api
+        // https://www.zhipin.com/wapi/zpCommon/data/cityGroup.json
         NULL("不限", "0"),
         ALL("全国", "100010000"),
         BEIJING("北京", "101010100"),
         SHANGHAI("上海", "101020100"),
         GUANGZHOU("广州", "101280100"),
         SHENZHEN("深圳", "101280600"),
-        CHENGDU("成都", "101270100");
+        CHENGDU("成都", "101270100"),
+        HANGZHOU("杭州", "101210100"),
+        JIAXING("嘉兴", "101210300"),
+        SUZHOU("苏州", "101190400"),
+        NANJING("南京", "101190100");
 
         private final String name;
         private final String code;
