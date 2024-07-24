@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
@@ -328,8 +329,19 @@ public class Boss {
                     return -2;
                 }
             }
+
             SeleniumUtil.sleep(1);
-            WebElement btn = CHROME_DRIVER.findElement(By.cssSelector("[class*='btn btn-startchat']"));
+
+            WebElement btn;
+
+            try {
+                btn = CHROME_DRIVER.findElement(By.cssSelector("[class*='btn btn-startchat']"));
+            } catch (NoSuchElementException e) {
+                log.info("跳过可能已关闭的职位");
+
+                continue;
+            }
+
             if ("立即沟通".equals(btn.getText())) {
                 btn.click();
                 if (isLimit()) {

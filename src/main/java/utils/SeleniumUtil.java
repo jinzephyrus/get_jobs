@@ -57,8 +57,7 @@ public class SeleniumUtil {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver-linux64/chromedriver");
                 break;
             default:
-                log.info("你这什么破系统，没见过，别跑了!");
-                break;
+                throw new UnsupportedOperationException("unsupported system: %s".formatted(osName));
         }
         options.addExtensions(new File("src/main/resources/xpathHelper.crx"));
         GraphicsDevice[] screens = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
